@@ -9,15 +9,19 @@ try {
 }
 
 $app = new Laravel\Lumen\Application(
-    realpath(__DIR__.'/')
+    realpath(__DIR__.'/app')
 );
 
 $app->withFacades();
 
 $app->withEloquent();
 
-$app->get("/",function(){
-    return "lumen application";
+$app->singleton(\Illuminate\Contracts\Debug\ExceptionHandler::class,function(){
+    $handler = new \Chatbox\Lumen\Exceptions\Handler();
+    // set your Reporters;
+    return $handler;
 });
+
+$app->register(\Chatbox\PageApp\PageAppServiceProvider::class);
 
 return $app;

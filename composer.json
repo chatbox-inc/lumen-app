@@ -11,6 +11,12 @@
             "backend/{$name}": ["chatbox-inc/lumen-providers"]
         }
     },
+    "autoload":{
+        "psr-4":{
+            "Chatbox\\RestApp\\":"./backend/restapp/src/",
+            "Chatbox\\PageApp\\":"./backend/pageapp/src/"
+        }
+    },
     "scripts":{
         "post-update-cmd": [],
         "post-package-install": [],
@@ -22,6 +28,8 @@
         ]
     },
     "require": {
-        "laravel/lumen": "^5.2"
+        "laravel/lumen": "^5.2",
+        "chatbox-inc/lumen-providers": "dev-master",
+        "barryvdh/laravel-debugbar": "^2.2"
     }
 }

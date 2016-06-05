@@ -28,7 +28,14 @@ $app = require __DIR__.'/backend/bootstrap.php';
 |
 */
 
-$app->register(App\Console\ConsoleAppProvider::class);
+$app->register(\Chatbox\Lumen\Providers\ArtisanServiceProvider::class);
+
+$app->extend(\Illuminate\Contracts\Console\Kernel::class,function($console){
+    $console->addCommands([
+        // your commands here
+    ]);
+    return $console;
+});
 
 $kernel = $app->make(
     'Illuminate\Contracts\Console\Kernel'

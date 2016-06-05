@@ -10,25 +10,22 @@ $ composer create-project chatbox-inc/lumen myProject dev-master --prefer-dist
 
 REST APIアプリケーション構築スケルトンとして。
 
-backend ディレクトリはフレームワーク層として極力触らない形で。
+アプリケーションの本体はこちらに。
 
-index.php などのファイル側でServiceProviderを差し込みアプリケーションを定義出来るように。
+https://github.com/chatbox-inc/lumen-app
 
-config ディレクトリは完全に取っ払ってしまっているので、
-デフォルトのディレクトリ設定などは以下のURLを参照。
-
-https://github.com/laravel/lumen-framework/tree/master/config
-
-初期構築ファイルは
-
-https://github.com/laravel/lumen
 
 を参照。
 
-### bootstrap.php
+Submodule化してもルートファイルが多くて何かと不便なので、Submodule対応は進めない方向で。
 
-参照パスの固定などartisanも含む全アプリケーションで共通の設定のみ行う。
+### 参照
 
+デフォルトのConfigなど
+https://github.com/laravel/lumen-framework/tree/master/config
+
+初期構築ファイルは
+https://github.com/laravel/lumen
 
 ## Packages
 
