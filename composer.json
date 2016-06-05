@@ -23,8 +23,6 @@
         "post-install-cmd": [],
         "post-autoload-dump": [],
         "post-create-project-cmd": [
-            "git init && git commit -m first_commit --allow-empty",
-            "git subtree add --prefix=backend/app https://github.com/chatbox-inc/lumen-app.git master",
             "cp .env.example .env"
         ]
     },
