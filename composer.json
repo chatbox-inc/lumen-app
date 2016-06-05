@@ -1,0 +1,24 @@
+{
+    "name": "mkkn/lumen2",
+    "authors": [
+        {
+            "name": "mikakane",
+            "email": "mikakane2@gmail.com"
+        }
+    ],
+    "extra": {
+        "installer-paths": {
+            "backend/{$name}": ["chatbox-inc/lumen-providers"]
+        }
+    },
+    "scripts":{
+        "post-update-cmd": [],
+        "post-package-install": [],
+        "post-install-cmd": [],
+        "post-autoload-dump": [],
+        "post-create-project-cmd": [
+            "git subtree add --prefix=backend/app https://github.com/chatbox-inc/lumen-app.git master",
+            "cp .env.example .env"
+        ]
+    }
+}
