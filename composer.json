@@ -20,5 +20,8 @@
             "git subtree add --prefix=backend/app https://github.com/chatbox-inc/lumen-app.git master",
             "cp .env.example .env"
         ]
+    },
+    "require": {
+        "laravel/lumen": "^5.2"
     }
 }
