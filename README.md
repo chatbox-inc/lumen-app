@@ -8,14 +8,10 @@ $ composer create-project chatbox-inc/lumen myProject dev-master --prefer-dist
 
 ## 基本方針
 
-REST APIアプリケーション構築スケルトンとして。
+Lumenアプリケーション構築スケルトンとして。
 
-アプリケーションの本体はこちらに。
-
-https://github.com/chatbox-inc/lumen-app
-
-
-を参照。
+各種サービス・プロバイダの機能は以下を参照
+https://github.com/chatbox-inc/lumen-providers
 
 Submodule化してもルートファイルが多くて何かと不便なので、Submodule対応は進めない方向で。
 
@@ -27,13 +23,6 @@ https://github.com/laravel/lumen-framework/tree/master/config
 初期構築ファイルは
 https://github.com/laravel/lumen
 
-## Packages
-
-- Lumen Framework
-- psysh http://psysh.org/#install
-- IDE HELPER 
-- homestead 
-- CORS 対応 barryvdh/laravel-cors
 
 ### homestead
 
