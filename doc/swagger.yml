@@ -6,7 +6,7 @@ swagger: '2.0'
 # This is your document metadata
 info:
   version: "0.0.1"
-  title: 基本ユーザ管理API
+  title: メッセージ発行API
 
 
 parameters:
@@ -14,12 +14,6 @@ parameters:
     name: uid
     in: path
     description: メッセージID
-    type: string
-    required: true
-  mailtoken:
-    name: X-MAILTOKEN
-    in: header
-    description: メールトークン
     type: string
     required: true
 
