@@ -1,5 +1,9 @@
 # メッセージ管理
 
+APIドキュメントはこちら
+
+http://editor.swagger.io/#/?import=https://raw.githubusercontent.com/chatbox-inc/message/master/doc/swagger.yml
+
 ## support 
 
 フロントからのメッセージ投げ込みのみをサポート
