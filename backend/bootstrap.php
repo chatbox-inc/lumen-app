@@ -22,7 +22,9 @@ $app->singleton(\Illuminate\Contracts\Debug\ExceptionHandler::class,function(){
     return $handler;
 });
 
-$app->register(\Chatbox\PageApp\PageAppServiceProvider::class);
 $app->register(\Chatbox\RestApp\RestApiServiceProvider::class);
+
+$app->register(\Chatbox\RestApp\Message2ServiceProvider::class);
+$app->register(\Chatbox\RestApp\Message1ServiceProvider::class);
 
 return $app;

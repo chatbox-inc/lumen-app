@@ -12,9 +12,22 @@ from to をユーザIDにしてSMS活用
 
 to をbox_idにしてBOX MESSAGE活用など
 
+## 利用方法
+
+MessageServiceInterface を注入する
+
 
 
 テーブル構成
 
 id 
 heade
+
+
+## issue
+
+- [x] 基本ライブラリ作成
+- [x] Sample作成
+− [ ] 基礎テスト作成
+− [ ] APIドキュメント生成
+− [ ] パッケージ公開

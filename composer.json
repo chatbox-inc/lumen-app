@@ -13,9 +13,15 @@
     },
     "autoload":{
         "psr-4":{
-            "Chatbox\\RestApp\\":"./backend/restapp/src/",
-            "Chatbox\\PageApp\\":"./backend/pageapp/src/"
+            "Chatbox\\Message\\":"./src/"
         }
+    },
+    "autoload-dev":{
+        "psr-4":{
+            "Chatbox\\RestApp\\":"./backend/restapp/src/"
+        },
+        "classmap":["./backend/app/database/"]
+
     },
     "scripts":{
         "post-update-cmd": [],
