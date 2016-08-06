@@ -1,16 +1,11 @@
 {
-    "name": "mkkn/lumen2",
+    "name": "chatbox-inc/message",
     "authors": [
         {
             "name": "mikakane",
             "email": "mikakane2@gmail.com"
         }
     ],
-    "extra": {
-        "installer-paths": {
-            "backend/{$name}": ["chatbox-inc/lumen-providers"]
-        }
-    },
     "autoload":{
         "psr-4":{
             "Chatbox\\Message\\":"./src/"
@@ -28,16 +23,12 @@
         "post-package-install": [],
         "post-install-cmd": [],
         "post-autoload-dump": [],
-        "post-create-project-cmd": [
-            "cp .env.example .env"
-        ]
+        "post-create-project-cmd": []
     },
     "require": {
-        "laravel/lumen": "^5.2",
-        "chatbox-inc/lumen-providers": "dev-master",
-        "barryvdh/laravel-debugbar": "^2.2"
     },
     "require-dev": {
+        "laravel/lumen": "^5.2",
         "peridot-php/peridot": "^1.18",
         "chatbox-inc/peridot-lumen-plugin": "^1.0"
     }
