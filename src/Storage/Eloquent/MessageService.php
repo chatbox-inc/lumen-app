@@ -45,6 +45,7 @@ class MessageService extends Model implements MessageServiceInterface, MessageIn
     public function write(array $message = []):MessageInterface
     {
         $message["code"] = sha1(mt_rand());
+        $message["body"] = json_encode($message["body"]);
         return $this->create($message);
     }
 
