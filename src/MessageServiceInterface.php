@@ -47,3 +47,5 @@ interface MessageServiceInterface
 }
 
 class MessageServiceException extends \Exception{}
+
+class MessageNotFoundException extends MessageServiceException{}

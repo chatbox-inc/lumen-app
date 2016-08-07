@@ -5,6 +5,8 @@ use Chatbox\Message\MessageServiceException;
 use Chatbox\Message\MessageServiceInterface;
 use Chatbox\Message\Storage\SimpleSchema;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Factory;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Created by PhpStorm.
@@ -68,6 +70,19 @@ class MessageService extends Model implements MessageServiceInterface, MessageIn
             return true;
         }else{
             return false;
+        }
+    }
+
+    protected function validate($key,$value,$rules,$message){
+        /** @var Factory $validator */
+        $validator = app("validator");
+        $val = $validator->make([
+            $key => $value
+        ],$rules,$message);
+        if($val->passes()){
+            return $value;
+        }else{
+            throw new ValidationException($val);
         }
     }
 }

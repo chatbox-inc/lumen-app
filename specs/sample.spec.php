@@ -11,35 +11,25 @@ describe('ArrayObject', function() {
         });
     });
 
-    it('GET / should get ok ', function() {
+    it('assert http', function() {
+        $spec = new \Chatbox\Message\Spec\HttpSpec($this->lumen);
         $message = [
             "from" => "Tom",
             "to" => "John",
             "body" => "hello world"
         ];
 
-        $this->lumen->post("/message",[
-            "message" => $message
-        ]);
-        /** @var \Illuminate\Http\Response $response */
-        $response = $this->lumen->response;
+        $response = $spec->post($message)->response();
+        $spec->isOk();
+        $spec->assertResponseHasUid();
 
-        assert($response->getStatusCode() === 200);
-        $body = $response->getOriginalContent();
-        $uid = array_get($body,"uid");
-        assert(is_string($uid));
+        $uid = $spec->getUid();
+        $response = $spec->get($uid)->response();
+        $spec->isOk();
+        $spec->assertResponseHasMessage();
 
-        $this->lumen->get("/message/$uid");
 
-        /** @var \Illuminate\Http\Response $response */
-        $response = $this->lumen->response;
 
-        assert($response->getStatusCode() === 200);
-        $body = $response->getOriginalContent();
-        $recieveMessage = array_get($body,"message");
-        foreach ($message as $key=>$value) {
-            assert($recieveMessage[$key] === $value );
-        }
     });
 });
 ?>

@@ -10,6 +10,8 @@ namespace Chatbox\Message\Http;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Factory;
+use Illuminate\Validation\ValidationException;
 
 class MessageRequest
 {
@@ -17,24 +19,46 @@ class MessageRequest
         return app(Request::class);
     }
 
-    public function getUid(){
-        $id = $this->request()->route("uid");
-        return $id;
-    }
+//    public function getUid(){
+//        $uid = $this->request()->route("uid");
+//        return $this->validate("uid",$uid,[
+//            "uid" => "string"
+//        ]);
+//    }
 
     public function getConjection(){
-        $id = $this->request()->get("conj");
-        return $id;
+        $conj = $this->request()->get("conj",[]);
+        return $this->validate("conj",$conj,[
+            "conj" => "array"
+        ]);
     }
 
     public function getPager(){
-        $id = $this->request()->get("pager");
-        return $id;
+        $pager = $this->request()->get("pager",[]);
+        return $this->validate("pager",$pager,[
+            "pager" => "array"
+        ]);
+        return $pager;
     }
 
     public function getMessage(){
-        $id = $this->request()->get("message");
-        return $id;
+        $mes = $this->request()->get("message");
+        return $this->validate("message",$mes,[
+            "message" => "array"
+        ]);
+    }
+
+    protected function validate($key,$value,$rules,$message=[]){
+        /** @var Factory $validator */
+        $validator = app("validator");
+        $val = $validator->make([
+            $key => $value
+        ],$rules,$message);
+        if($val->passes()){
+            return $value;
+        }else{
+            throw new ValidationException($val);
+        }
     }
 
 

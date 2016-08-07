@@ -2,3 +2,4 @@
 /.env
 /node_modules
 /composer.lock
+/backend/app/database/database.sqlite
