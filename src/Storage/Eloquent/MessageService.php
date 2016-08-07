@@ -1,6 +1,7 @@
 <?php
 namespace Chatbox\Message\Storage\Eloquent;
 use Chatbox\Message\MessageInterface;
+use Chatbox\Message\MessageNotFoundException;
 use Chatbox\Message\MessageServiceException;
 use Chatbox\Message\MessageServiceInterface;
 use Chatbox\Message\Storage\SimpleSchema;
@@ -33,7 +34,7 @@ class MessageService extends Model implements MessageServiceInterface, MessageIn
         if($message){
             return $message;
         }else{
-            throw new MessageServiceException("message not found");
+            throw new MessageNotFoundException("message not found");
         }
     }
 
@@ -47,12 +48,15 @@ class MessageService extends Model implements MessageServiceInterface, MessageIn
     public function write(array $message = []):MessageInterface
     {
         $message["code"] = sha1(mt_rand());
-        $message["body"] = json_encode($message["body"]);
+        $message["body"] = json_encode(array_get($message,"body"));
+        $message = $this->validate($message);
         return $this->create($message);
     }
 
     public function rewrite($_uid, array $message)
     {
+        $message["body"] = json_encode($message["body"]);
+        $message = $this->validate($message);
         $message = $this->find($_uid);
         if($message){
             $message->update($message);
@@ -66,21 +70,25 @@ class MessageService extends Model implements MessageServiceInterface, MessageIn
     {
         $message = $this->find(array_get($conj,"id"));
         if($message){
-            $this->message->delete();
+            $message->delete();
             return true;
         }else{
             return false;
         }
     }
 
-    protected function validate($key,$value,$rules,$message){
+    protected function validate(array $message){
+        $rules = [
+            "code" => ["required","string"],
+            "from" => ["required","string"],
+            "to" => ["required","string"],
+            "body" => ["required","string"],
+        ];
         /** @var Factory $validator */
         $validator = app("validator");
-        $val = $validator->make([
-            $key => $value
-        ],$rules,$message);
+        $val = $validator->make($message,$rules,$message);
         if($val->passes()){
-            return $value;
+            return $message;
         }else{
             throw new ValidationException($val);
         }

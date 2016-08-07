@@ -1,7 +1,9 @@
 <?php
 namespace Chatbox\Message\Spec;
 use Chatbox\Message\MessageInterface;
+use Chatbox\Message\MessageNotFoundException;
 use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
 
 /**
  * Created by PhpStorm.
@@ -79,8 +81,14 @@ class HttpSpec
         assert($message instanceof MessageInterface);
     }
 
-    public function assertResponseHasException(){
+    public function assertResponseHasNotFoundException(){
+        $e = $this->response()->exception;
+        assert($e instanceof MessageNotFoundException);
+    }
 
+    public function assertResponseHasValidationException(){
+        $e = $this->response()->exception;
+        assert($e instanceof ValidationException);
     }
 
 
