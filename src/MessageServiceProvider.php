@@ -37,9 +37,6 @@ abstract class MessageServiceProvider extends ServiceProvider
         }
     }
 
-    abstract protected function getRouter();
-
-
     public function setRoute($app){
         // 単一メッセージの取得
         $entry = $this->default?"message":"message/{$this->key}";
