@@ -25,7 +25,7 @@ abstract class MessageServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->setRoute();
+        $this->setRoute($this->app);
         $this->app->singleton($this->key,function(){
             return $this->getMessageService();
         });
@@ -40,8 +40,7 @@ abstract class MessageServiceProvider extends ServiceProvider
     abstract protected function getRouter();
 
 
-    public function setRoute(){
-        $app = $this->getRouter();
+    public function setRoute($app){
         // 単一メッセージの取得
         $entry = $this->default?"message":"message/{$this->key}";
         $app->get("/{$entry}/{uid}",$this->controllerName."@get");
