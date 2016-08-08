@@ -1,0 +1,13 @@
+machine:
+  php:
+    version: 7.0.4
+  environment:
+    DB_CONNECTION: sqlite
+
+database:
+  override:
+    - "php artisan migrate --force"
+
+test:
+  override:
+    - make test

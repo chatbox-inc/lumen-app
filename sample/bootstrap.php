@@ -2,14 +2,8 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-try {
-    (new \Dotenv\Dotenv(__DIR__.'/../'))->load();
-} catch (\Dotenv\Exception\InvalidPathException $e) {
-    throw $e;
-}
-
 $app = new Laravel\Lumen\Application(
-    realpath(__DIR__.'/app')
+    realpath(__DIR__)
 );
 
 $app->withFacades();
@@ -22,9 +16,12 @@ $app->singleton(\Illuminate\Contracts\Debug\ExceptionHandler::class,function(){
     return $handler;
 });
 
-$app->register(\Chatbox\RestApp\RestApiServiceProvider::class);
+$app->register(\Chatbox\LumenApp\LumenAppServiceProvider::class);
 
-$app->register(\Chatbox\RestApp\Message2ServiceProvider::class);
-$app->register(\Chatbox\RestApp\Message1ServiceProvider::class);
+$app->get("/",function(){
+    return [
+        "message" => "hello lumen application "
+    ];
+});
 
 return $app;

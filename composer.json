@@ -8,15 +8,8 @@
     ],
     "autoload":{
         "psr-4":{
-            "Chatbox\\Message\\":"./src/"
+            "Chatbox\\LumenApp\\":"./src/"
         }
-    },
-    "autoload-dev":{
-        "psr-4":{
-            "Chatbox\\RestApp\\":"./backend/restapp/src/"
-        },
-        "classmap":["./backend/app/database/"]
-
     },
     "scripts":{
         "post-update-cmd": [],
