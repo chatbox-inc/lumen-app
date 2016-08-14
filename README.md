@@ -1,6 +1,6 @@
 # Lumen アプリケーション・フレームワーク
 
-[![Latest Stable Version](https://poser.pugx.org/phpunit/phpunit/version)](https://packagist.org/packages/chatbox-inc/lumen-app)
+[![Latest Stable Version](https://poser.pugx.org/chatbox-inc/lumen-app/version)](https://packagist.org/packages/chatbox-inc/lumen-app)
 
 アプリケーションで必須の構成ResponseとExceptionをコンテナに登録する。
 
