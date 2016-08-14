@@ -34,4 +34,19 @@ ExceptionHandler内でコールされる。
 
 ## Usage
 
+Service Provider を登録して利用
 
+````
+$app->register(\Chatbox\LumenApp\LumenAppServiceProvider::class);
+````
+
+挙動の制御はコンテナ登録or書き換えを経由して行う。
+
+レスポンス周りを修正する場合は`ResponseFactoryInterface::class`で修正。
+
+````
+$app->singleton(ResponseFactoryInterface::class,function(){
+    return new APIResponse();
+});
+
+````
